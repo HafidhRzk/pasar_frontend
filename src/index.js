@@ -1,28 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'assets/css/App.css';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
-import AuthLayout from 'layouts/auth';
-import AdminLayout from 'layouts/admin';
-import RtlLayout from 'layouts/rtl';
-import { ChakraProvider } from '@chakra-ui/react';
-import theme from 'theme/theme';
-import { ThemeEditorProvider } from '@hypertheme-editor/chakra-ui';
+import React,  { Suspense } from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import store from './app/store'
+import { Provider } from 'react-redux'
+import SuspenseContent from './containers/SuspenseContent';
 
-ReactDOM.render(
-	<ChakraProvider theme={theme}>
-		<React.StrictMode>
-			<ThemeEditorProvider>
-				<HashRouter>
-					<Switch>
-						<Route path={`/auth`} component={AuthLayout} />
-						<Route path={`/admin`} component={AdminLayout} />
-						<Route path={`/rtl`} component={RtlLayout} />
-						<Redirect from='/' to='/admin' />
-					</Switch>
-				</HashRouter>
-			</ThemeEditorProvider>
-		</React.StrictMode>
-	</ChakraProvider>,
-	document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  // <React.StrictMode>
+    <Suspense fallback={<SuspenseContent />}>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </Suspense>
+  // </React.StrictMode>
 );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
