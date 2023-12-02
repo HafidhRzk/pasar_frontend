@@ -1,13 +1,14 @@
-import {useState, useRef} from 'react'
-import {Link} from 'react-router-dom'
 import Login from '../features/user/Login'
+import { Helmet } from 'react-helmet';
 
-function ExternalPage(){
-
-
-    return(
+function ExternalPage() {
+    const title = 'Login';
+    return (
         <div className="">
-                <Login />
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
+            <Login />
         </div>
     )
 }
