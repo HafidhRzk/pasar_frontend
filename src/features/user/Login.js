@@ -36,6 +36,7 @@ function Login() {
 
                 if (response?.status === 200) {
                     localStorage.setItem("token", response.data.data.token)
+                    localStorage.setItem("access", JSON.stringify(response.data.data))
                     setLoading(false)
                     window.location.href = '/app/welcome'
                 }

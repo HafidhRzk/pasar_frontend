@@ -34,10 +34,8 @@ function App() {
           <Route path="/landing-page" element={<LandingPage />} />
 
           {/* Place new routes over this */}
-          <Route path="/app/*" element={<Layout />} />
-
+          <Route path="/*" element={<Layout />} />
           <Route path="*" element={<Navigate to={token ? "/app/welcome" : "/landing-page"} replace />} />
-
         </Routes>
       </Router>
     </>
