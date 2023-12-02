@@ -1,13 +1,15 @@
-import {useState, useRef} from 'react'
-import {Link} from 'react-router-dom'
 import Register from '../features/user/Register'
+import { Helmet } from 'react-helmet';
 
-function ExternalPage(){
+function ExternalPage() {
 
-
-    return(
+    const title = 'Register';
+    return (
         <div className="">
-                <Register />
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
+            <Register />
         </div>
     )
 }
