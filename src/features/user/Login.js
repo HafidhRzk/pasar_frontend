@@ -38,7 +38,7 @@ function Login() {
                     localStorage.setItem("token", response.data.data.token)
                     localStorage.setItem("access", JSON.stringify(response.data.data))
                     setLoading(false)
-                    window.location.href = '/app/welcome'
+                    window.location.href = '/app/dashboard'
                 }
             }
         } catch (error) {
@@ -53,21 +53,21 @@ function Login() {
     }
 
     return (
-        <div className="min-h-screen bg-base-200 flex items-center">
-            <div className="card mx-auto w-full max-w-2xl  shadow-xl">
+        <div className="flex items-center min-h-screen bg-base-200">
+            <div className="w-full max-w-2xl mx-auto shadow-xl card">
                 <div className="bg-base-100 rounded-xl">
-                    <div className='py-24 px-10 m-10'>
-                        <h2 className='text-2xl font-semibold mb-2 text-center'>Login</h2>
+                    <div className='px-10 py-24 m-10'>
+                        <h2 className='mb-2 text-2xl font-semibold text-center'>Login</h2>
                         <form onSubmit={(e) => submitForm(e)}>
                             <div className="mb-4">
                                 <InputText type="email" defaultValue={loginObj.email} updateType="email" containerStyle="mt-4" labelTitle="Email" updateFormValue={updateFormValue} />
                                 <InputText defaultValue={loginObj.password} type="password" updateType="password" containerStyle="mt-4" labelTitle="Password" updateFormValue={updateFormValue} />
                             </div>
-                            {/* <div className='text-right text-primary'><Link to="/forgot-password"><span className="text-sm  inline-block  hover:text-primary hover:underline hover:cursor-pointer transition duration-200">Forgot Password?</span></Link>
+                            {/* <div className='text-right text-primary'><Link to="/forgot-password"><span className="inline-block text-sm transition duration-200 hover:text-primary hover:underline hover:cursor-pointer">Forgot Password?</span></Link>
                             </div> */}
                             <ErrorText styleClass="mt-8">{errorMessage}</ErrorText>
                             <button type="submit" className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>Login</button>
-                            <div className='text-center mt-4'>Don't have an account yet? <Link to="/register"><span className="  inline-block  hover:text-primary hover:underline hover:cursor-pointer transition duration-200">Register</span></Link></div>
+                            <div className='mt-4 text-center'>Don't have an account yet? <Link to="/register"><span className="inline-block transition duration-200  hover:text-primary hover:underline hover:cursor-pointer">Register</span></Link></div>
                         </form>
                     </div>
                 </div>
